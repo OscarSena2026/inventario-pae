@@ -4,17 +4,6 @@ Código fuente del módulo del proyecto, conectado a MySQL por JDBC, con CRUD co
 (inserción, consulta, actualización y eliminación) para el modelo relacional definido
 en AA1 (`Diagrama_ERR_PAE.mwb` — esquema `inventario_pae`).
 
-## ⚠️ Nota sobre la base tomada de AA1
-
-Al revisar tus artefactos previos encontré **dos** modelos distintos:
-
-1. `Diagrama_de_clases...GA4-220501095-AA2-EV04.pdf`: diagrama de clases UML pensado
-   para una arquitectura **Node.js/TypeScript + PostgreSQL**.
-2. `Diagrama_ERR_PAE.mwb`: modelo entidad-relación hecho en **MySQL Workbench**
-   (esquema `inventario_pae`, con tablas `producto`, `proveedor`, `lote`, `entrada`,
-   `salida`, `bodega`, `sede`, `municipio`, `empleado`, `existencia`, etc.).
-
-
 
 ## Estructura del proyecto
 
@@ -52,14 +41,12 @@ suma/resta el stock cuando se registra una entrada o salida (ver `Main.java`).
 
 ## Versionamiento (Git)
 
-El repositorio de AA1 ya debería estar configurado. Para este entregable:
+El repositorio de AA1:
 ```
 git add .
 git commit -m "EV01: codificación de módulos - CRUD JDBC MySQL"
 git push
 ```
-Recuerda incluir en tu entrega el archivo comprimido **y** el enlace al repositorio,
-tal como pide la guía.
 
 ## Estándar de codificación aplicado
 

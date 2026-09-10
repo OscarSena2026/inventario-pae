@@ -1,0 +1,11 @@
+GA7-220501096-AA2-EV02 — Módulos de software codificados y probados (Servlets, JSP)
+Aprendiz: Oscar Fabian Estrada Arango
+
+Enlace del repositorio:
+https://github.com/OscarSena2026/inventario-pae
+
+Este módulo (proyecto_web/) se agregó al mismo repositorio usado en EV01,
+manteniendo un único historial de versionamiento para todo el proyecto.
+El repositorio contiene el historial de commits del desarrollo de ambas
+evidencias, incluyendo la conexión JDBC, el CRUD completo en consola (EV01)
+y los Servlets/JSP con formularios web GET/POST (EV02).
