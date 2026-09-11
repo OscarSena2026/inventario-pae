@@ -5,6 +5,11 @@ import com.pae.api.repository.EntradaRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo Entrada (ingreso de mercancia a una bodega).
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/entradas")
 public class EntradaController {

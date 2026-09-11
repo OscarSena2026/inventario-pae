@@ -5,6 +5,11 @@ import com.pae.api.repository.EmpleadoRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo Empleado.
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/empleados")
 public class EmpleadoController {

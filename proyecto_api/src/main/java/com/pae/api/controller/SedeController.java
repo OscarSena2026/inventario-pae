@@ -5,6 +5,11 @@ import com.pae.api.repository.SedeRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo Sede (institucion educativa que recibe el PAE).
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/sedes")
 public class SedeController {

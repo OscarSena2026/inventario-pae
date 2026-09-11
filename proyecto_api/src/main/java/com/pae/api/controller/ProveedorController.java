@@ -5,6 +5,11 @@ import com.pae.api.repository.ProveedorRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo Proveedor.
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/proveedores")
 public class ProveedorController {

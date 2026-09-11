@@ -5,6 +5,11 @@ import com.pae.api.repository.DetalleSalidaRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo DetalleSalida (lineas de una salida de mercancia).
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/detalles-salida")
 public class DetalleSalidaController {

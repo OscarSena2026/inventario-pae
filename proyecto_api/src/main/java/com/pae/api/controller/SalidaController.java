@@ -5,6 +5,11 @@ import com.pae.api.repository.SalidaRepository;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+/**
+ * Controlador REST del modulo Salida (despacho de mercancia hacia una sede).
+ * Expone el CRUD (Create, Read, Update, Delete) generado por Spring Data JPA
+ * a traves de endpoints REST bajo /api/**.
+ */
 @RestController
 @RequestMapping("/api/salidas")
 public class SalidaController {
