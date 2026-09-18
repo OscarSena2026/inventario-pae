@@ -1,7 +1,9 @@
 package com.pae.api.controller;
 
 import com.pae.api.entity.Producto;
+import com.pae.api.exception.ReglaNegocioException;
 import com.pae.api.repository.ProductoRepository;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -9,6 +11,8 @@ import java.util.List;
  * Controlador REST del modulo Producto.
  * El framework (Spring Data JPA) ya nos da el CRUD basico via ProductoRepository;
  * aqui lo adaptamos a las rutas del inventario PAE.
+ * Implementa HU-02 (registrar producto) y HU-08 (modificar producto), incluyendo
+ * sus criterios de aceptacion: campos obligatorios y sin nombres duplicados.
  */
 @RestController
 @RequestMapping("/api/productos")
@@ -41,12 +45,17 @@ public class ProductoController {
     }
 
     @PostMapping
-    public Producto crear(@RequestBody Producto producto) {
+    public Producto crear(@Valid @RequestBody Producto producto) {
+        // HU-02: "No permite codigos duplicados" (adaptado a nombre_producto)
+        if (repositorio.existsByNombreProductoIgnoreCase(producto.getNombreProducto())) {
+            throw new ReglaNegocioException(
+                    "Ya existe un producto registrado con el nombre '" + producto.getNombreProducto() + "'");
+        }
         return repositorio.save(producto);
     }
 
     @PutMapping("/{id}")
-    public Producto actualizar(@PathVariable Long id, @RequestBody Producto datos) {
+    public Producto actualizar(@PathVariable Long id, @Valid @RequestBody Producto datos) {
         datos.setIdProducto(id);
         return repositorio.save(datos);
     }
@@ -56,3 +65,4 @@ public class ProductoController {
         repositorio.deleteById(id);
     }
 }
+

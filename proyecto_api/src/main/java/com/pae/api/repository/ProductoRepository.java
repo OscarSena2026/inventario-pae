@@ -12,4 +12,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
     List<Producto> findByCategoria(String categoria);
 
     List<Producto> findByPerecedero(String perecedero);
+
+    // Usado para bloquear productos duplicados (HU-02: "No permite codigos duplicados")
+    boolean existsByNombreProductoIgnoreCase(String nombreProducto);
 }
