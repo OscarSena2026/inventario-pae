@@ -1,0 +1,17 @@
+/* Estilos propios: complementan a Bootstrap con los colores del Sistema de Inventario PAE. */
+body {
+  background-color: #f4f7f4;
+}
+
+.barra-pae {
+  background-color: #1b6e0c;
+}
+
+.barra-pae .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.barra-pae .nav-link:hover,
+.barra-pae .nav-link.active {
+  color: #ffffff;
+}
