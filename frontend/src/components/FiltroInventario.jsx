@@ -10,9 +10,11 @@ import SelectCatalogo from './SelectCatalogo';
  * @param {Function} alFiltrar Se ejecuta con { idBodega, texto } cada vez que cambia un filtro.
  */
 function FiltroInventario({ bodegas, alFiltrar }) {
+  // Estado: bodega y texto elegidos. En cada cambio se avisa al padre para que filtre la lista al instante.
   const [idBodega, setIdBodega] = useState('');
   const [texto, setTexto] = useState('');
 
+  // Convierte las bodegas de la API en opciones { valor, texto } para la lista desplegable.
   const opcionesBodega = bodegas.map((b) => ({ valor: b.idBodega, texto: b.nombreBodega }));
 
   // Evento onChange de la lista de bodegas.

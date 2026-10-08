@@ -25,6 +25,7 @@ function TablaExistencias({ existencias }) {
           </tr>
         </thead>
         <tbody>
+          {/* Una fila por existencia: la «key» (idExistencia) ayuda a React a identificar cada fila */}
           {existencias.map((existencia) => (
             <tr key={existencia.idExistencia}>
               <td>{existencia.bodega.nombreBodega}</td>

@@ -14,6 +14,7 @@ import { etiquetaLote, formatearCantidad } from '../utils/formato';
  * Al agregar cada detalle, la API verifica el stock y descuenta la cantidad.
  */
 function PaginaSalidas() {
+  // Estado: catálogos para las listas, salida creada (null = aún no), stock de la bodega, detalles agregados y aviso.
   const [catalogos, setCatalogos] = useState({ bodegas: [], sedes: [], empleados: [] });
   const [salida, setSalida] = useState(null);
   const [disponibles, setDisponibles] = useState([]); // existencias de la bodega de la salida
@@ -83,6 +84,7 @@ function PaginaSalidas() {
     setMensaje({ tipo: 'exito', texto: 'Producto agregado a la salida. El stock se descontó.' });
   };
 
+  // Reinicia la pantalla para registrar otra salida desde el paso 1.
   const nuevaSalida = () => {
     setSalida(null);
     setDetalles([]);
@@ -95,6 +97,7 @@ function PaginaSalidas() {
     .filter((e) => Number(e.cantidadDisponible) > 0)
     .map((e) => ({ valor: e.lote.idLote, texto: etiquetaLote(e.lote, `disponible ${formatearCantidad(e.cantidadDisponible)}`) }));
 
+  // Paso 1 visible mientras no exista la salida; al crearla se muestra el paso 2 (detalles).
   return (
     <section>
       <h2 className="h3 mb-3">Registrar salida de productos</h2>

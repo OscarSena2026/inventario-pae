@@ -11,6 +11,7 @@ import * as api from '../services/api';
 
 vi.mock('../services/api');
 
+// Datos de ejemplo con la misma forma que devuelve la API.
 const bodega = { idBodega: 1, nombreBodega: 'Bodega Central Montería' };
 const proveedor = { idProveedor: 2, nombreProveedor: 'Distribuidora La Sabana' };
 const empleado = { idEmpleado: 1, nombres: 'Laura Martínez', cargo: 'Bodeguera' };
@@ -19,8 +20,10 @@ const producto = { idProducto: 1, nombreProducto: 'Arroz', categoria: 'Granos', 
 const lote = { idLote: 1, fechaVencimiento: '2027-01-01', producto };
 const existencia = { idExistencia: 1, cantidadDisponible: 50, bodega, lote };
 
+// Dibuja la aplicación completa en la ruta indicada (sin navegador real).
 const ir = (ruta) => render(<MemoryRouter initialEntries={[ruta]} future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><App /></MemoryRouter>);
 
+// Antes de cada prueba se reinician los mocks y se simulan las respuestas de la API (sin servidor real).
 beforeEach(() => {
   vi.resetAllMocks();
   api.listarBodegas.mockResolvedValue([bodega]);

@@ -13,6 +13,7 @@ import { fechaHoy } from '../utils/formato';
  * @param {Function} alCrear   Función async que recibe los datos y crea la salida.
  */
 function FormularioSalida({ bodegas, sedes, empleados, alCrear }) {
+  // Estado: valores de los campos (la fecha arranca en hoy), errores de validación y bandera de envío.
   const [valores, setValores] = useState({
     fechaSalida: fechaHoy(),
     motivo: '',
@@ -23,15 +24,18 @@ function FormularioSalida({ bodegas, sedes, empleados, alCrear }) {
   const [errores, setErrores] = useState({});
   const [enviando, setEnviando] = useState(false);
 
+  // Convierte los datos de la API en opciones { valor, texto } para las listas desplegables.
   const opcionesBodega = bodegas.map((b) => ({ valor: b.idBodega, texto: b.nombreBodega }));
   const opcionesSede = sedes.map((s) => ({ valor: s.idSede, texto: s.nombreSede }));
   const opcionesEmpleado = empleados.map((e) => ({ valor: e.idEmpleado, texto: `${e.nombres} (${e.cargo})` }));
 
+  // Evento onChange: copia lo que el usuario escribe o elige al campo que se llama igual (name) en el estado.
   const manejarCambio = (evento) => {
     const { name, value } = evento.target;
     setValores({ ...valores, [name]: value });
   };
 
+  // Validación del lado del cliente: fecha, bodega, sede y empleado son obligatorios; el motivo, máximo 100 caracteres.
   const validar = () => {
     const nuevos = {};
     if (!valores.fechaSalida) nuevos.fechaSalida = 'La fecha es obligatoria';
@@ -43,6 +47,7 @@ function FormularioSalida({ bodegas, sedes, empleados, alCrear }) {
     return Object.keys(nuevos).length === 0;
   };
 
+  // Evento onSubmit: valida, bloquea el botón mientras la página padre crea la salida y luego lo libera.
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
     if (!validar()) return;
@@ -51,6 +56,7 @@ function FormularioSalida({ bodegas, sedes, empleados, alCrear }) {
     setEnviando(false);
   };
 
+  // Formulario controlado: cada campo muestra el valor del estado y su error (si lo hay) bajo el campo.
   return (
     <form onSubmit={manejarEnvio} noValidate className="card card-body mb-4">
       <h5 className="card-title">1. Datos generales de la salida</h5>
@@ -81,6 +87,7 @@ function FormularioSalida({ bodegas, sedes, empleados, alCrear }) {
         </div>
       </div>
       <div>
+        {/* Se deshabilita mientras se envía para evitar crear dos salidas con doble clic */}
         <button type="submit" className="btn btn-success" disabled={enviando}>
           {enviando ? 'Creando...' : 'Crear salida'}
         </button>

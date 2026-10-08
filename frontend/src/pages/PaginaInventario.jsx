@@ -11,6 +11,7 @@ import { obtenerMensajeError } from '../utils/mensajes';
  * después de las entradas y salidas.
  */
 function PaginaInventario() {
+  // Estado: existencias y bodegas de la API, filtros elegidos, aviso para el usuario y bandera de carga.
   const [existencias, setExistencias] = useState([]);
   const [bodegas, setBodegas] = useState([]);
   const [filtro, setFiltro] = useState({ idBodega: '', texto: '' });
@@ -44,6 +45,7 @@ function PaginaInventario() {
     return coincideBodega && coincideTexto;
   });
 
+  // La página solo coordina: el filtro avisa qué se eligió y la tabla dibuja la lista ya filtrada.
   return (
     <section>
       <div className="d-flex justify-content-between align-items-center mb-3">

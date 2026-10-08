@@ -11,6 +11,7 @@ import { obtenerMensajeError } from '../utils/mensajes';
  */
 function PaginaProductos() {
   // Estado de la página.
+  // Estado: lista de productos, producto que se está editando (null = registro nuevo), aviso y bandera de carga.
   const [productos, setProductos] = useState([]);
   const [productoEnEdicion, setProductoEnEdicion] = useState(null);
   const [mensaje, setMensaje] = useState({ tipo: 'exito', texto: '' });
@@ -59,6 +60,7 @@ function PaginaProductos() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Un solo formulario sirve para registrar y modificar; debajo se muestra la tabla con la lista.
   return (
     <section>
       <h2 className="h3 mb-3">Productos</h2>

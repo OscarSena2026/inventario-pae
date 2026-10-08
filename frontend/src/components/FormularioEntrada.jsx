@@ -14,6 +14,7 @@ import { fechaHoy } from '../utils/formato';
  * @param {Function} alCrear      Función async que recibe los datos y crea la entrada.
  */
 function FormularioEntrada({ bodegas, proveedores, empleados, alCrear }) {
+  // Estado: valores de los campos (la fecha arranca en hoy), errores de validación y bandera de envío.
   const [valores, setValores] = useState({
     fechaEntrada: fechaHoy(),
     numeroFactura: '',
@@ -47,7 +48,7 @@ function FormularioEntrada({ bodegas, proveedores, empleados, alCrear }) {
     return Object.keys(nuevos).length === 0;
   };
 
-  // Evento onSubmit.
+  // Evento onSubmit: valida, bloquea el botón mientras la página padre crea la entrada y luego lo libera.
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
     if (!validar()) return;

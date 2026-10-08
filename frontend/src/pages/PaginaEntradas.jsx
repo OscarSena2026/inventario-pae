@@ -15,6 +15,7 @@ import { etiquetaLote, formatearCantidad, formatearMoneda } from '../utils/forma
  */
 function PaginaEntradas() {
   // Estado: catálogos para las listas, entrada creada y detalles agregados.
+  // 'entrada' es null hasta que se crea la cabecera (paso 1); entonces aparece el paso 2.
   const [catalogos, setCatalogos] = useState({ bodegas: [], proveedores: [], empleados: [], lotes: [] });
   const [entrada, setEntrada] = useState(null);
   const [detalles, setDetalles] = useState([]);
